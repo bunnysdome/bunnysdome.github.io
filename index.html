@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Website</title>
+
+  <!-- Fun rounded fonts from Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== COLOURS LIVE HERE — change these and the whole page changes ===== */
+    :root {
+      --sky: #2563eb;        /* the page background */
+      --card: #ffffff;       /* the white card in the middle */
+      --ink: #1e2947;        /* main text colour */
+      --pop: #f59e0b;        /* the fun accent colour */
+    }
+
+    /* ===== THE PAGE ===== */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--sky);
+      font-family: 'Nunito', sans-serif;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      transition: background 0.6s;   /* makes colour changes smooth */
+    }
+
+    /* ===== THE CARD ===== */
+    .card {
+      background: var(--card);
+      max-width: 520px;
+      width: 100%;
+      border-radius: 28px;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    /* ===== THE BIG GREETING ===== */
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 800;
+      font-size: 2.4rem;
+      line-height: 1.15;
+      margin: 0 0 8px;
+    }
+
+    /* the wavy highlight under one word */
+    .wavy {
+      text-decoration: underline wavy var(--pop) 4px;
+      text-underline-offset: 6px;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      margin: 0 0 28px;
+    }
+
+    /* ===== THE MAGIC BUTTON ===== */
+    button {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #fff;
+      background: var(--pop);
+      border: none;
+      border-radius: 999px;
+      padding: 14px 30px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+
+    button:hover  { transform: scale(1.07); }  /* grows when you point at it */
+    button:active { transform: scale(0.95); }  /* squishes when you click   */
+
+    .footer {
+      margin-top: 26px;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hello, world!<br>I'm on the <span class="wavy">internet</span> 🚀</h1>
+    <p class="tagline">This website was built by me and it is LIVE right now.</p>
+
+    <button onclick="magic()">Press the magic button</button>
+
+    <p class="footer">My first website · Hosted free on GitHub Pages</p>
+  </div>
+
+  <script>
+    // A list of colour pairs: [background, accent]
+    const themes = [
+      ["#2563eb", "#f59e0b"],   // blue + amber
+      ["#16a34a", "#facc15"],   // green + yellow
+      ["#dc2626", "#fb923c"],   // red + orange
+      ["#7c3aed", "#22d3ee"],   // purple + cyan
+      ["#0f172a", "#4ade80"]    // midnight + lime
+    ];
+    let i = 0;
+
+    // Runs every time the button is pressed
+    function magic() {
+      i = (i + 1) % themes.length;               // move to the next theme
+      const root = document.documentElement.style;
+      root.setProperty("--sky", themes[i][0]);   // change the background
+      root.setProperty("--pop", themes[i][1]);   // change the accent
+    }
+  </script>
+
+</body>
+</html>
